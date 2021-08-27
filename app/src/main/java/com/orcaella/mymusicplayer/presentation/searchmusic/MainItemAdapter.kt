@@ -10,7 +10,8 @@ import com.orcaella.mymusicplayer.data.MusicDetail
 import kotlinx.android.synthetic.main.list_item_song.view.*
 
 class MainItemAdapter(
-    private val musicList: ArrayList<MusicDetail>
+    private val musicList: ArrayList<MusicDetail>,
+    private val clickListener: MusicCellClickListener
 ) : RecyclerView.Adapter<MainItemAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,11 +32,15 @@ class MainItemAdapter(
         LayoutInflater.from(parent.context).inflate(R.layout.list_item_song, parent, false)
     )
 
-    override fun onBindViewHolder(holder: DataViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         holder.bind(musicList[position])
+        holder.itemView.setOnClickListener {
+            clickListener.onStartMusicClickListener(musicList[position].previewUrl ?: "")
+            holder.itemView.imagePlaying.visibility = View.VISIBLE
+        }
+    }
 
     override fun getItemCount(): Int = musicList.size ?: 0
-
 
     fun addData(list: List<MusicDetail>) {
         musicList.clear()

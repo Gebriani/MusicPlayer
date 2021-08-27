@@ -13,5 +13,6 @@ data class MusicDetail(
     val artworkUrl100: String?,
     val trackCount: Long?,
     val trackNumber: Long?,
-    val trackTimeMillis: Long?
+    val trackTimeMillis: Long?,
+    val previewUrl: String?
 )

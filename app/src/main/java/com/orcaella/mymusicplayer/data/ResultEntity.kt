@@ -21,7 +21,8 @@ data class ResultEntity(
         val artworkUrl100: String?,
         val trackCount: Long?,
         val trackNumber: Long?,
-        val trackTimeMillis: Long?
+        val trackTimeMillis: Long?,
+        val previewUrl: String?
     )
 
     fun toMusicDataDetail(): List<MusicDetail> {
@@ -39,7 +40,8 @@ data class ResultEntity(
                 artworkUrl100 = it.artworkUrl100.orEmpty(),
                 trackCount = it.trackCount ?: 0,
                 trackNumber = it.trackNumber ?: 0,
-                trackTimeMillis = it.trackTimeMillis ?: 0
+                trackTimeMillis = it.trackTimeMillis ?: 0,
+                previewUrl = it.previewUrl.orEmpty()
             )
         } ?: listOf()
         return content
