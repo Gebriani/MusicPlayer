@@ -1,2 +1,3 @@
-# MusicPlayer
-Music player app with hilt
+# * Supported Device : android version > 21
+* Supported Feature : List music, search music
+
